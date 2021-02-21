@@ -1,25 +1,28 @@
 import java.util.Scanner;
-class employee{
+class Employee{
     String fam, im, otch, doljnost;
     int oklad;
     int countChildren;
     Children[] children = null;
 }
 class Children{
-    String name;
-    int age;
+    String nameC;
+    int ageC;
 }
+
 public class MainClass {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Введите количество сотрудников => ");
         int count = sc.nextInt();
         sc.nextLine();
-        employee[] emp = new employee[count];
+        Employee[] emp = new Employee[count];
+
         System.out.println("Введите информацию о каждом сотруднике.");
+
         for (int i = 0; i < count; i++) {
             System.out.println("Введите информацию о " + (i + 1) + "-м сотруднике");
-            emp[i] = new employee();
+            emp[i] = new Employee();
             System.out.println("Введите Фамилию");
             emp[i].fam = sc.nextLine();
             System.out.println("Введите Имя");
@@ -33,28 +36,32 @@ public class MainClass {
             System.out.println("Введите количетсво детей");
             emp[i].countChildren = sc.nextInt();
             sc.nextLine();
-            if(emp[i].countChildren!=0){
+
+            if(emp[i].countChildren != 0){
                 emp[i].children = new Children[emp[i].countChildren];
+                System.out.println("Дети:");
                 for (int j = 0; j < emp[i].countChildren; j++){
                     emp[i].children[j] = new Children();
+
                     System.out.println("Введите имя "+ (i+1) +" ребенка:");
-                    emp[i].children[j].name = sc.nextLine();
+                    emp[i].children[j].nameC = sc.nextLine();
+
                     System.out.println("Введите возраст "+ (i+1) +" ребенка:");
-                    emp[i].children[j].age = sc.nextInt();
+                    emp[i].children[j].ageC = sc.nextInt();
                     sc.nextLine();
+                    }
                 }
             }
-        }
-        for (employee e : emp) {
-            System.out.println("\nСотрудники фирмы \nфам имя отч должность");
-            System.out.print(e.fam+ "\t"+e.im + "\t"+ e.otch + "\t "+ e.doljnost+ "\t\t"+e.oklad+ "\n");
-            if (e.children!=null) {
+
+            System.out.println("\nСотрудники фирмы \n фам \t имя \t отч \t должность");
+
+            for (Employee e : emp) {
+                System.out.print(e.fam+ "\t"+e.im + "\t"+ e.otch + "\t "+ e.doljnost+ "\t\t"+e.oklad+ "\n");
                 System.out.println("\n Дети: ");
-                for (Children c : e.children)
-                    System.out.println("\t" + c.name + "\t" + c.age);
-                System.out.println("");
-            }
+                for  (Children c: e.children)
+                    System.out.println(c.nameC+ "\t\t"+ c.ageC);
             }
         }
     }
+
 
