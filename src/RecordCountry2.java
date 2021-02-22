@@ -1,4 +1,3 @@
-package recordCountry2;
 import java.util.Scanner;
 
 class Country{
@@ -134,8 +133,13 @@ public class RecordCountry2{
 
         System.out.println("\nСтраны, с площадью больше средней");
         Country[] larger = avgBig(country);
-        showArray(larger);
-
+        if (larger == null){
+            System.out.println("Введена одна страна:  ");
+            showArray(country);
+        }
+        else {
+            showArray(larger);
+        }
         System.out.println("\nfindCountry \n" + "Введите название страны: ");
         sc.nextLine();
         String sname = sc.nextLine();
